@@ -19,15 +19,17 @@ def upload_file():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'],
                                    filename))
-            return redirect(url_for('uploaded_file',
+            return redirect(url_for('upload_file',
                                     filename=filename))
     return '''
     <!doctype html>
     <title>Upload new File</title>
     <h1>Upload new File</h1>
     <form action="" method=post enctype=multipart/form-data>
-      <p><input type=file name=file>
-         <input type=submit value=Upload>
+    <p>
+        <input type=file name=file>
+        <input type=submit value=Upload>
+    </p>
     </form>
     '''
 
